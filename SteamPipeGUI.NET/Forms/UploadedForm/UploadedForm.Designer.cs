@@ -33,7 +33,7 @@
             this.previewButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // message
             // 
             this.message.AutoSize = true;
             this.message.Location = new System.Drawing.Point(64, 9);
@@ -77,6 +77,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UploadedForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Success";
             this.ResumeLayout(false);
             this.PerformLayout();

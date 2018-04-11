@@ -40,7 +40,7 @@ namespace SteamPipeGUI.NET
             Configuration configuration =
                 JsonConvert.DeserializeObject<Configuration>(
                     File.ReadAllText(Application.StartupPath + @"\scripts\SteamPipeGUI.NET.Configuration.JSON"));
-            liveComboBox.Items.AddRange(configuration.Branches);
+            setLiveComboBox.Items.AddRange(configuration.Branches);
             steamcmdPathTextBox.Text = configuration.SteamCmdPath;
             usernameTextBox.Text = configuration.SteamLogin;
         }
@@ -49,7 +49,7 @@ namespace SteamPipeGUI.NET
         {
             Configuration configuration = new Configuration();
             List<object> branches = new List<object>();
-            foreach (object obj in liveComboBox.Items) {
+            foreach (object obj in setLiveComboBox.Items) {
                 branches.Add(obj);
             }
             configuration.Branches = branches.ToArray();
@@ -265,7 +265,7 @@ namespace SteamPipeGUI.NET
         {
             appIdBox.Text = build.AppId.ToString();
             descBox.Text = build.BuildDescription;
-            liveComboBox.Text = build.SetLive;
+            setLiveComboBox.Text = build.SetLive;
             outputTextBox.Text = build.BuildOutput;
             contentTextBox.Text = build.ContentRoot;
             localServerTextBox.Text = build.Local;
@@ -325,25 +325,30 @@ namespace SteamPipeGUI.NET
 
         private void buildUploadButton_Click(object sender, EventArgs e)
         {
-            SaveConfiguration();
             if (uploadButton.Text == "Abort") {
                 _steamcmdProcess.Kill();
                 uploadButton.Enabled = false;
                 return;
-            }
-            if (!liveComboBox.Items.Contains(liveComboBox.Text)) {
-                liveComboBox.Items.Add(liveComboBox.Text);
             }
             if (!File.Exists(steamcmdPathTextBox.Text)) {
                 MessageBox.Show("STEAMCMD.EXE is not exist or the provided path is invalid.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (setLiveComboBox.Text == "default") {
+                MessageBox.Show("Builds for `default` branch should be applied manually on Steamworks website.",
+                    "Set Live", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                setLiveComboBox.Text = string.Empty;
+            }
+            if (!setLiveComboBox.Items.Contains(setLiveComboBox.Text)) {
+                setLiveComboBox.Items.Add(setLiveComboBox.Text);
+            }
+            SaveConfiguration();
             AppendLog("Generating app_build...");
             Build build = new Build(int.Parse(appIdBox.Text)) {
                 BuildDescription = descBox.Text,
                 Depots = depotListBox.Items.Cast<string>().ToList(),
-                SetLive = liveComboBox.Text,
+                SetLive = setLiveComboBox.Text,
                 ContentRoot = contentTextBox.Text,
                 BuildOutput = outputTextBox.Text,
                 Local = localServerTextBox.Text,

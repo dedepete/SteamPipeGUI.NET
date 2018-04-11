@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.logBox = new System.Windows.Forms.RichTextBox();
             this.mainTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buildConfigPage = new System.Windows.Forms.TabPage();
             this.mainConfigGroup = new System.Windows.Forms.GroupBox();
             this.sdkTip = new System.Windows.Forms.Label();
             this.passTip = new System.Windows.Forms.Label();
@@ -58,27 +58,27 @@
             this.outputDirLabel = new System.Windows.Forms.Label();
             this.appIdBox = new System.Windows.Forms.TextBox();
             this.appIdLabel = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.depotManagmentPage = new System.Windows.Forms.TabPage();
             this.depotGroup = new System.Windows.Forms.GroupBox();
             this.depotRevertButton = new System.Windows.Forms.Button();
             this.depotSaveButton = new System.Windows.Forms.Button();
             this.depotTabControl = new System.Windows.Forms.TabControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.depotBasicPage = new System.Windows.Forms.TabPage();
             this.depotContentRootPath = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.depotMappingsPage = new System.Windows.Forms.TabPage();
             this.FileMappingGrid = new System.Windows.Forms.DataGridView();
             this.LocalPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DepotPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Recursive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.depotExclusionsPage = new System.Windows.Forms.TabPage();
             this.ExclusionsDataGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.depotRemoveButton = new System.Windows.Forms.Button();
             this.AddNewDepotButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.depotListBox = new System.Windows.Forms.ListBox();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.aboutPage = new System.Windows.Forms.TabPage();
             this.copyrightLabel = new System.Windows.Forms.Label();
             this.jsonLink = new System.Windows.Forms.LinkLabel();
             this.vdfLink = new System.Windows.Forms.LinkLabel();
@@ -93,7 +93,7 @@
             this.buildDescLabel = new System.Windows.Forms.Label();
             this.descBox = new System.Windows.Forms.TextBox();
             this.setLiveLabel = new System.Windows.Forms.Label();
-            this.liveComboBox = new System.Windows.Forms.ComboBox();
+            this.setLiveComboBox = new System.Windows.Forms.ComboBox();
             this.uploadButton = new System.Windows.Forms.Button();
             this.previewButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
@@ -103,18 +103,18 @@
             this.reloadEnviButton = new System.Windows.Forms.Button();
             this.infoTip = new System.Windows.Forms.ToolTip(this.components);
             this.mainTabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.buildConfigPage.SuspendLayout();
             this.mainConfigGroup.SuspendLayout();
             this.buildConfigGroup.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.depotManagmentPage.SuspendLayout();
             this.depotGroup.SuspendLayout();
             this.depotTabControl.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
+            this.depotBasicPage.SuspendLayout();
+            this.depotMappingsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FileMappingGrid)).BeginInit();
-            this.tabPage5.SuspendLayout();
+            this.depotExclusionsPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ExclusionsDataGrid)).BeginInit();
-            this.tabPage7.SuspendLayout();
+            this.aboutPage.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -135,9 +135,9 @@
             // mainTabControl
             // 
             this.mainTabControl.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.mainTabControl.Controls.Add(this.tabPage1);
-            this.mainTabControl.Controls.Add(this.tabPage2);
-            this.mainTabControl.Controls.Add(this.tabPage7);
+            this.mainTabControl.Controls.Add(this.buildConfigPage);
+            this.mainTabControl.Controls.Add(this.depotManagmentPage);
+            this.mainTabControl.Controls.Add(this.aboutPage);
             this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTabControl.Location = new System.Drawing.Point(0, 0);
             this.mainTabControl.Name = "mainTabControl";
@@ -145,17 +145,17 @@
             this.mainTabControl.Size = new System.Drawing.Size(784, 362);
             this.mainTabControl.TabIndex = 1;
             // 
-            // tabPage1
+            // buildConfigPage
             // 
-            this.tabPage1.Controls.Add(this.mainConfigGroup);
-            this.tabPage1.Controls.Add(this.buildConfigGroup);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(776, 333);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Build Configuration";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.buildConfigPage.Controls.Add(this.mainConfigGroup);
+            this.buildConfigPage.Controls.Add(this.buildConfigGroup);
+            this.buildConfigPage.Location = new System.Drawing.Point(4, 25);
+            this.buildConfigPage.Name = "buildConfigPage";
+            this.buildConfigPage.Padding = new System.Windows.Forms.Padding(3);
+            this.buildConfigPage.Size = new System.Drawing.Size(776, 333);
+            this.buildConfigPage.TabIndex = 0;
+            this.buildConfigPage.Text = "Build Configuration";
+            this.buildConfigPage.UseVisualStyleBackColor = true;
             // 
             // mainConfigGroup
             // 
@@ -417,19 +417,19 @@
             this.appIdLabel.TabIndex = 1;
             this.appIdLabel.Text = "AppID:";
             // 
-            // tabPage2
+            // depotManagmentPage
             // 
-            this.tabPage2.Controls.Add(this.depotGroup);
-            this.tabPage2.Controls.Add(this.AddNewDepotButton);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.depotListBox);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(776, 333);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Depot Managment";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.depotManagmentPage.Controls.Add(this.depotGroup);
+            this.depotManagmentPage.Controls.Add(this.AddNewDepotButton);
+            this.depotManagmentPage.Controls.Add(this.label7);
+            this.depotManagmentPage.Controls.Add(this.depotListBox);
+            this.depotManagmentPage.Location = new System.Drawing.Point(4, 25);
+            this.depotManagmentPage.Name = "depotManagmentPage";
+            this.depotManagmentPage.Padding = new System.Windows.Forms.Padding(3);
+            this.depotManagmentPage.Size = new System.Drawing.Size(776, 333);
+            this.depotManagmentPage.TabIndex = 1;
+            this.depotManagmentPage.Text = "Depot Managment";
+            this.depotManagmentPage.UseVisualStyleBackColor = true;
             // 
             // depotGroup
             // 
@@ -480,9 +480,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.depotTabControl.Appearance = System.Windows.Forms.TabAppearance.Buttons;
-            this.depotTabControl.Controls.Add(this.tabPage3);
-            this.depotTabControl.Controls.Add(this.tabPage4);
-            this.depotTabControl.Controls.Add(this.tabPage5);
+            this.depotTabControl.Controls.Add(this.depotBasicPage);
+            this.depotTabControl.Controls.Add(this.depotMappingsPage);
+            this.depotTabControl.Controls.Add(this.depotExclusionsPage);
             this.depotTabControl.Location = new System.Drawing.Point(3, 16);
             this.depotTabControl.Name = "depotTabControl";
             this.depotTabControl.SelectedIndex = 0;
@@ -490,17 +490,17 @@
             this.depotTabControl.TabIndex = 0;
             this.depotTabControl.Tag = "";
             // 
-            // tabPage3
+            // depotBasicPage
             // 
-            this.tabPage3.Controls.Add(this.depotContentRootPath);
-            this.tabPage3.Controls.Add(this.label8);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(640, 151);
-            this.tabPage3.TabIndex = 0;
-            this.tabPage3.Text = "Basic Settings";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.depotBasicPage.Controls.Add(this.depotContentRootPath);
+            this.depotBasicPage.Controls.Add(this.label8);
+            this.depotBasicPage.Location = new System.Drawing.Point(4, 25);
+            this.depotBasicPage.Name = "depotBasicPage";
+            this.depotBasicPage.Padding = new System.Windows.Forms.Padding(3);
+            this.depotBasicPage.Size = new System.Drawing.Size(640, 151);
+            this.depotBasicPage.TabIndex = 0;
+            this.depotBasicPage.Text = "Basic Settings";
+            this.depotBasicPage.UseVisualStyleBackColor = true;
             // 
             // depotContentRootPath
             // 
@@ -519,16 +519,16 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Content Root:";
             // 
-            // tabPage4
+            // depotMappingsPage
             // 
-            this.tabPage4.Controls.Add(this.FileMappingGrid);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(640, 151);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "File Mappings";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.depotMappingsPage.Controls.Add(this.FileMappingGrid);
+            this.depotMappingsPage.Location = new System.Drawing.Point(4, 25);
+            this.depotMappingsPage.Name = "depotMappingsPage";
+            this.depotMappingsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.depotMappingsPage.Size = new System.Drawing.Size(640, 151);
+            this.depotMappingsPage.TabIndex = 1;
+            this.depotMappingsPage.Text = "File Mappings";
+            this.depotMappingsPage.UseVisualStyleBackColor = true;
             // 
             // FileMappingGrid
             // 
@@ -581,16 +581,16 @@
             this.Recursive.TrueValue = "1";
             this.Recursive.Width = 65;
             // 
-            // tabPage5
+            // depotExclusionsPage
             // 
-            this.tabPage5.Controls.Add(this.ExclusionsDataGrid);
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(640, 151);
-            this.tabPage5.TabIndex = 2;
-            this.tabPage5.Text = "Exclusions";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.depotExclusionsPage.Controls.Add(this.ExclusionsDataGrid);
+            this.depotExclusionsPage.Location = new System.Drawing.Point(4, 25);
+            this.depotExclusionsPage.Name = "depotExclusionsPage";
+            this.depotExclusionsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.depotExclusionsPage.Size = new System.Drawing.Size(640, 151);
+            this.depotExclusionsPage.TabIndex = 2;
+            this.depotExclusionsPage.Text = "Exclusions";
+            this.depotExclusionsPage.UseVisualStyleBackColor = true;
             // 
             // ExclusionsDataGrid
             // 
@@ -658,26 +658,26 @@
             this.depotListBox.TabIndex = 0;
             this.depotListBox.SelectedIndexChanged += new System.EventHandler(this.depotListBox_SelectedIndexChanged);
             // 
-            // tabPage7
+            // aboutPage
             // 
-            this.tabPage7.Controls.Add(this.copyrightLabel);
-            this.tabPage7.Controls.Add(this.jsonLink);
-            this.tabPage7.Controls.Add(this.vdfLink);
-            this.tabPage7.Controls.Add(this.jsonLabel);
-            this.tabPage7.Controls.Add(this.vdfLabel);
-            this.tabPage7.Controls.Add(this.poweredWithLabel);
-            this.tabPage7.Controls.Add(this.myLink);
-            this.tabPage7.Controls.Add(this.developedByLabel);
-            this.tabPage7.Controls.Add(this.descLabel);
-            this.tabPage7.Controls.Add(this.versionLabel);
-            this.tabPage7.Controls.Add(this.productNameLabel);
-            this.tabPage7.Location = new System.Drawing.Point(4, 25);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(776, 333);
-            this.tabPage7.TabIndex = 3;
-            this.tabPage7.Text = "About";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.aboutPage.Controls.Add(this.copyrightLabel);
+            this.aboutPage.Controls.Add(this.jsonLink);
+            this.aboutPage.Controls.Add(this.vdfLink);
+            this.aboutPage.Controls.Add(this.jsonLabel);
+            this.aboutPage.Controls.Add(this.vdfLabel);
+            this.aboutPage.Controls.Add(this.poweredWithLabel);
+            this.aboutPage.Controls.Add(this.myLink);
+            this.aboutPage.Controls.Add(this.developedByLabel);
+            this.aboutPage.Controls.Add(this.descLabel);
+            this.aboutPage.Controls.Add(this.versionLabel);
+            this.aboutPage.Controls.Add(this.productNameLabel);
+            this.aboutPage.Location = new System.Drawing.Point(4, 25);
+            this.aboutPage.Name = "aboutPage";
+            this.aboutPage.Padding = new System.Windows.Forms.Padding(3);
+            this.aboutPage.Size = new System.Drawing.Size(776, 333);
+            this.aboutPage.TabIndex = 3;
+            this.aboutPage.Text = "About";
+            this.aboutPage.UseVisualStyleBackColor = true;
             // 
             // copyrightLabel
             // 
@@ -815,13 +815,13 @@
             this.setLiveLabel.TabIndex = 5;
             this.setLiveLabel.Text = "Set Live on non-Default branch:";
             // 
-            // liveComboBox
+            // setLiveComboBox
             // 
-            this.liveComboBox.FormattingEnabled = true;
-            this.liveComboBox.Location = new System.Drawing.Point(182, 37);
-            this.liveComboBox.Name = "liveComboBox";
-            this.liveComboBox.Size = new System.Drawing.Size(215, 21);
-            this.liveComboBox.TabIndex = 6;
+            this.setLiveComboBox.FormattingEnabled = true;
+            this.setLiveComboBox.Location = new System.Drawing.Point(182, 37);
+            this.setLiveComboBox.Name = "setLiveComboBox";
+            this.setLiveComboBox.Size = new System.Drawing.Size(215, 21);
+            this.setLiveComboBox.TabIndex = 6;
             // 
             // uploadButton
             // 
@@ -855,7 +855,7 @@
             this.mainPanel.Controls.Add(this.reloadEnviButton);
             this.mainPanel.Controls.Add(this.previewButton);
             this.mainPanel.Controls.Add(this.uploadButton);
-            this.mainPanel.Controls.Add(this.liveComboBox);
+            this.mainPanel.Controls.Add(this.setLiveComboBox);
             this.mainPanel.Controls.Add(this.buildDescLabel);
             this.mainPanel.Controls.Add(this.setLiveLabel);
             this.mainPanel.Controls.Add(this.descBox);
@@ -919,23 +919,23 @@
             this.Text = "SteamPipeGUI.NET";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.mainTabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.buildConfigPage.ResumeLayout(false);
             this.mainConfigGroup.ResumeLayout(false);
             this.mainConfigGroup.PerformLayout();
             this.buildConfigGroup.ResumeLayout(false);
             this.buildConfigGroup.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.depotManagmentPage.ResumeLayout(false);
+            this.depotManagmentPage.PerformLayout();
             this.depotGroup.ResumeLayout(false);
             this.depotTabControl.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
+            this.depotBasicPage.ResumeLayout(false);
+            this.depotBasicPage.PerformLayout();
+            this.depotMappingsPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FileMappingGrid)).EndInit();
-            this.tabPage5.ResumeLayout(false);
+            this.depotExclusionsPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ExclusionsDataGrid)).EndInit();
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage7.PerformLayout();
+            this.aboutPage.ResumeLayout(false);
+            this.aboutPage.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -948,12 +948,12 @@
 
         private System.Windows.Forms.RichTextBox logBox;
         private System.Windows.Forms.TabControl mainTabControl;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage buildConfigPage;
         private System.Windows.Forms.Label buildDescLabel;
         private System.Windows.Forms.TextBox descBox;
         private System.Windows.Forms.Label appIdLabel;
         private System.Windows.Forms.TextBox appIdBox;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage depotManagmentPage;
         private System.Windows.Forms.GroupBox mainConfigGroup;
         private System.Windows.Forms.Button browseButton;
         private System.Windows.Forms.Label cmdPathLabel;
@@ -965,7 +965,7 @@
         private System.Windows.Forms.GroupBox buildConfigGroup;
         private System.Windows.Forms.CheckBox showPasswordCheckBox;
         private System.Windows.Forms.Label setLiveLabel;
-        private System.Windows.Forms.ComboBox liveComboBox;
+        private System.Windows.Forms.ComboBox setLiveComboBox;
         private System.Windows.Forms.Button uploadButton;
         private System.Windows.Forms.Button previewButton;
         private System.Windows.Forms.Panel mainPanel;
@@ -974,16 +974,16 @@
         private System.Windows.Forms.GroupBox depotGroup;
         private System.Windows.Forms.Button AddNewDepotButton;
         private System.Windows.Forms.TabControl depotTabControl;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage depotBasicPage;
         private System.Windows.Forms.Button depotRemoveButton;
         private System.Windows.Forms.TextBox depotContentRootPath;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage depotMappingsPage;
+        private System.Windows.Forms.TabPage depotExclusionsPage;
         private System.Windows.Forms.Button reloadEnviButton;
         private System.Windows.Forms.DataGridView FileMappingGrid;
         private System.Windows.Forms.DataGridView ExclusionsDataGrid;
-        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TabPage aboutPage;
         private System.Windows.Forms.Button depotSaveButton;
         private System.Windows.Forms.Button depotRevertButton;
         private System.Windows.Forms.TextBox localServerTextBox;

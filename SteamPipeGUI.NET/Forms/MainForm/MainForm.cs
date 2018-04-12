@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -25,8 +26,8 @@ namespace SteamPipeGUI.NET
         public MainForm()
         {
             InitializeComponent();
-            Text = ProductName + " " + ProductVersion;
-            versionLabel.Text = ProductVersion;
+            Text = ProductName + " " + Assembly.GetEntryAssembly().GetName().Version;
+            versionLabel.Text = Assembly.GetEntryAssembly().GetName().Version.ToString();
             LoadEnvironment();
             LoadConfiguration();
             AppendLog("Application initilized.");
@@ -255,7 +256,8 @@ namespace SteamPipeGUI.NET
             if (depotListBox.Items.Count != 0) {
                 depotListBox.SelectedIndex = 0;
             }
-            depotSaveButton.Enabled = depotRevertButton.Enabled = false;
+            depotSaveButton.Enabled = false;
+            depotRevertButton.Enabled = false;
             AppendLog("Environment prepared successfully.");
         }
 
@@ -310,7 +312,8 @@ namespace SteamPipeGUI.NET
         private void Grid_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             _previousDepotIndex = depotListBox.SelectedIndex;
-            depotSaveButton.Enabled = depotRevertButton.Enabled = true;
+            depotSaveButton.Enabled = true;
+            depotRevertButton.Enabled = true;
         }
 
         private void depotContentRootPath_TextChanged(object sender, EventArgs e)

@@ -183,18 +183,18 @@
             // 
             this.sdkTip.AutoSize = true;
             this.sdkTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sdkTip.Location = new System.Drawing.Point(140, 74);
+            this.sdkTip.Location = new System.Drawing.Point(161, 74);
             this.sdkTip.Name = "sdkTip";
             this.sdkTip.Size = new System.Drawing.Size(25, 13);
             this.sdkTip.TabIndex = 10;
             this.sdkTip.Text = "( ? )";
-            this.infoTip.SetToolTip(this.sdkTip, "Path to the STEAMCMD.EXE from Steamworks SDK.");
+            this.infoTip.SetToolTip(this.sdkTip, "Path to the STEAMCMD from Steamworks SDK.");
             // 
             // passTip
             // 
             this.passTip.AutoSize = true;
             this.passTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passTip.Location = new System.Drawing.Point(140, 48);
+            this.passTip.Location = new System.Drawing.Point(161, 48);
             this.passTip.Name = "passTip";
             this.passTip.Size = new System.Drawing.Size(25, 13);
             this.passTip.TabIndex = 9;
@@ -206,7 +206,7 @@
             // 
             this.usernameTip.AutoSize = true;
             this.usernameTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.usernameTip.Location = new System.Drawing.Point(140, 22);
+            this.usernameTip.Location = new System.Drawing.Point(161, 22);
             this.usernameTip.Name = "usernameTip";
             this.usernameTip.Size = new System.Drawing.Size(25, 13);
             this.usernameTip.TabIndex = 8;
@@ -216,7 +216,7 @@
             // showPasswordCheckBox
             // 
             this.showPasswordCheckBox.AutoSize = true;
-            this.showPasswordCheckBox.Location = new System.Drawing.Point(391, 47);
+            this.showPasswordCheckBox.Location = new System.Drawing.Point(412, 47);
             this.showPasswordCheckBox.Name = "showPasswordCheckBox";
             this.showPasswordCheckBox.Size = new System.Drawing.Size(102, 17);
             this.showPasswordCheckBox.TabIndex = 7;
@@ -226,7 +226,7 @@
             // 
             // browseButton
             // 
-            this.browseButton.Location = new System.Drawing.Point(391, 69);
+            this.browseButton.Location = new System.Drawing.Point(412, 69);
             this.browseButton.Name = "browseButton";
             this.browseButton.Size = new System.Drawing.Size(75, 23);
             this.browseButton.TabIndex = 6;
@@ -239,13 +239,13 @@
             this.cmdPathLabel.AutoSize = true;
             this.cmdPathLabel.Location = new System.Drawing.Point(10, 74);
             this.cmdPathLabel.Name = "cmdPathLabel";
-            this.cmdPathLabel.Size = new System.Drawing.Size(120, 13);
+            this.cmdPathLabel.Size = new System.Drawing.Size(96, 13);
             this.cmdPathLabel.TabIndex = 5;
-            this.cmdPathLabel.Text = "STEAMCMD.EXE Path:";
+            this.cmdPathLabel.Text = "STEAMCMD Path:";
             // 
             // steamcmdPathTextBox
             // 
-            this.steamcmdPathTextBox.Location = new System.Drawing.Point(178, 71);
+            this.steamcmdPathTextBox.Location = new System.Drawing.Point(199, 71);
             this.steamcmdPathTextBox.Name = "steamcmdPathTextBox";
             this.steamcmdPathTextBox.Size = new System.Drawing.Size(207, 20);
             this.steamcmdPathTextBox.TabIndex = 4;
@@ -253,7 +253,7 @@
             // 
             // usernameTextBox
             // 
-            this.usernameTextBox.Location = new System.Drawing.Point(178, 19);
+            this.usernameTextBox.Location = new System.Drawing.Point(199, 19);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(207, 20);
             this.usernameTextBox.TabIndex = 0;
@@ -279,7 +279,7 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(178, 45);
+            this.passwordTextBox.Location = new System.Drawing.Point(199, 45);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(207, 20);
@@ -312,7 +312,7 @@
             // 
             this.localTip.AutoSize = true;
             this.localTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.localTip.Location = new System.Drawing.Point(142, 100);
+            this.localTip.Location = new System.Drawing.Point(163, 100);
             this.localTip.Name = "localTip";
             this.localTip.Size = new System.Drawing.Size(25, 13);
             this.localTip.TabIndex = 14;
@@ -323,7 +323,7 @@
             // 
             this.contentTip.AutoSize = true;
             this.contentTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.contentTip.Location = new System.Drawing.Point(142, 74);
+            this.contentTip.Location = new System.Drawing.Point(163, 74);
             this.contentTip.Name = "contentTip";
             this.contentTip.Size = new System.Drawing.Size(25, 13);
             this.contentTip.TabIndex = 13;
@@ -334,7 +334,7 @@
             // 
             this.outputTip.AutoSize = true;
             this.outputTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.outputTip.Location = new System.Drawing.Point(142, 48);
+            this.outputTip.Location = new System.Drawing.Point(163, 48);
             this.outputTip.Name = "outputTip";
             this.outputTip.Size = new System.Drawing.Size(25, 13);
             this.outputTip.TabIndex = 12;
@@ -345,7 +345,7 @@
             // 
             this.appIdTip.AutoSize = true;
             this.appIdTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.appIdTip.Location = new System.Drawing.Point(142, 22);
+            this.appIdTip.Location = new System.Drawing.Point(163, 22);
             this.appIdTip.Name = "appIdTip";
             this.appIdTip.Size = new System.Drawing.Size(25, 13);
             this.appIdTip.TabIndex = 11;
@@ -354,7 +354,7 @@
             // 
             // localServerTextBox
             // 
-            this.localServerTextBox.Location = new System.Drawing.Point(180, 97);
+            this.localServerTextBox.Location = new System.Drawing.Point(201, 97);
             this.localServerTextBox.Name = "localServerTextBox";
             this.localServerTextBox.Size = new System.Drawing.Size(207, 20);
             this.localServerTextBox.TabIndex = 6;
@@ -370,7 +370,7 @@
             // 
             // contentTextBox
             // 
-            this.contentTextBox.Location = new System.Drawing.Point(180, 71);
+            this.contentTextBox.Location = new System.Drawing.Point(201, 71);
             this.contentTextBox.Name = "contentTextBox";
             this.contentTextBox.Size = new System.Drawing.Size(207, 20);
             this.contentTextBox.TabIndex = 4;
@@ -386,7 +386,7 @@
             // 
             // outputTextBox
             // 
-            this.outputTextBox.Location = new System.Drawing.Point(180, 45);
+            this.outputTextBox.Location = new System.Drawing.Point(201, 45);
             this.outputTextBox.Name = "outputTextBox";
             this.outputTextBox.Size = new System.Drawing.Size(207, 20);
             this.outputTextBox.TabIndex = 2;
@@ -403,7 +403,7 @@
             // 
             // appIdBox
             // 
-            this.appIdBox.Location = new System.Drawing.Point(180, 19);
+            this.appIdBox.Location = new System.Drawing.Point(201, 19);
             this.appIdBox.Name = "appIdBox";
             this.appIdBox.Size = new System.Drawing.Size(77, 20);
             this.appIdBox.TabIndex = 0;

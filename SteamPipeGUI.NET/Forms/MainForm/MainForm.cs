@@ -115,7 +115,7 @@ namespace SteamPipeGUI.NET
                     statusBar.Style = ProgressBarStyle.Blocks;
                     statusBar.Value++;
                     statusLabel.Text =
-                        $"Working with depot {Regex.Match(log, @"Building depot (\w+)...").Groups[1].Value}...";
+                        $"Working with depot `{Regex.Match(log, @"Building depot (\w+)...").Groups[1].Value}` [{statusBar.Value}/{statusBar.Maximum}]...";
                     return;
                 }
 
@@ -144,6 +144,11 @@ namespace SteamPipeGUI.NET
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (_steamcmdProcess != null && !_steamcmdProcess.HasExited) {
+                MessageBox.Show("STEAMCMD.EXE is still working.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                e.Cancel = true;
+                return;
+            }
             SaveConfiguration();
         }
 

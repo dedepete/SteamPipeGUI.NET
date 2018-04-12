@@ -68,7 +68,8 @@ namespace SteamPipeGUI.NET
 
         public FileMapping()
         {
-            LocalPath = DepotPath = ".";
+            LocalPath = ".";
+            DepotPath = ".";
             Recursive = 1;
         }
 

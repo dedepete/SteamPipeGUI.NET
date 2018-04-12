@@ -47,14 +47,11 @@ namespace SteamPipeGUI.NET
 
         private void SaveConfiguration()
         {
-            Configuration configuration = new Configuration();
-            List<object> branches = new List<object>();
-            foreach (object obj in setLiveComboBox.Items) {
-                branches.Add(obj);
-            }
-            configuration.Branches = branches.ToArray();
-            configuration.SteamCmdPath = steamcmdPathTextBox.Text;
-            configuration.SteamLogin = usernameTextBox.Text;
+            Configuration configuration = new Configuration {
+                Branches = setLiveComboBox.Items.Cast<object>().ToArray(),
+                SteamCmdPath = steamcmdPathTextBox.Text,
+                SteamLogin = usernameTextBox.Text
+            };
             File.WriteAllText(Application.StartupPath + @"\scripts\SteamPipeGUI.NET.Configuration.JSON",
                 JsonConvert.SerializeObject(configuration, Formatting.Indented));
         }
@@ -197,7 +194,8 @@ namespace SteamPipeGUI.NET
             }
             try {
                 LoadDepot();
-                depotSaveButton.Enabled = depotRevertButton.Enabled = false;
+                depotSaveButton.Enabled = false;
+                depotRevertButton.Enabled = false;
             }
             catch (Exception exception) {
                 AppendLog($"An unhandled exception is occured:{Environment.NewLine}{exception}");
@@ -318,7 +316,8 @@ namespace SteamPipeGUI.NET
         private void depotContentRootPath_TextChanged(object sender, EventArgs e)
         {
             _previousDepotIndex = depotListBox.SelectedIndex;
-            depotSaveButton.Enabled = depotRevertButton.Enabled = true;
+            depotSaveButton.Enabled = true;
+            depotRevertButton.Enabled = true;
         }
 
         private void depotRevertButton_Click(object sender, EventArgs e)
@@ -394,7 +393,9 @@ namespace SteamPipeGUI.NET
                 (s, args) => {
                     Invoke((MethodInvoker) delegate {
                         AppendLog($"Process has been finished with error code {_steamcmdProcess.ExitCode}.");
-                        uploadButton.Enabled = previewButton.Enabled = reloadEnviButton.Enabled = true;
+                        uploadButton.Enabled = true;
+                        previewButton.Enabled = true;
+                        reloadEnviButton.Enabled = true;
                         statusLabel.Text = "Ready!";
                         uploadButton.Text = "Upload";
                         statusBar.Style = ProgressBarStyle.Blocks;
@@ -406,7 +407,8 @@ namespace SteamPipeGUI.NET
             _steamcmdProcess.BeginOutputReadLine();
             _steamcmdProcess.BeginErrorReadLine();
             AppendLog("Process has been launched.");
-            previewButton.Enabled = reloadEnviButton.Enabled = false;
+            previewButton.Enabled = false;
+            reloadEnviButton.Enabled = false;
             statusLabel.Text = "Preparing things up...";
             statusBar.Value = 0;
             statusBar.Maximum = depotListBox.Items.Count + 1;
@@ -416,7 +418,7 @@ namespace SteamPipeGUI.NET
 
         private void browseButton_Click(object sender, EventArgs e)
         {
-            FileDialog fileDialog = new OpenFileDialog() {
+            FileDialog fileDialog = new OpenFileDialog {
                 Filter = "STEAMCMD.EXE|STEAMCMD.EXE|All Files (*.*)|*.*",
                 Multiselect = false
             };
@@ -432,9 +434,10 @@ namespace SteamPipeGUI.NET
 
         private void steamcmdPathTextBox_TextChanged(object sender, EventArgs e)
         {
-            uploadButton.Enabled =
-                previewButton.Enabled =
-                    !string.IsNullOrWhiteSpace(usernameTextBox.Text) && !string.IsNullOrWhiteSpace(steamcmdPathTextBox.Text);
+            bool enabled = !string.IsNullOrWhiteSpace(usernameTextBox.Text) &&
+                           !string.IsNullOrWhiteSpace(steamcmdPathTextBox.Text);
+            uploadButton.Enabled = enabled;
+            previewButton.Enabled = enabled;
         }
 
         private void buildPreviewButton_Click(object sender, EventArgs e)

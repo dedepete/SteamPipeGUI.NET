@@ -51,7 +51,7 @@
             this.depotIdLabel.TabIndex = 2;
             this.depotIdLabel.Text = "Depot ID:";
             // 
-            // CancelButton
+            // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(10, 38);
@@ -61,7 +61,7 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // AddButton
+            // addButton
             // 
             this.addButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.addButton.Location = new System.Drawing.Point(93, 38);
@@ -73,8 +73,7 @@
             // 
             // AddDepotForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(180, 69);
             this.ControlBox = false;
             this.Controls.Add(this.addButton);

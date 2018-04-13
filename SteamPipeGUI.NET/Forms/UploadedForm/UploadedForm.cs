@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SteamPipeGUI.NET
@@ -13,8 +14,9 @@ namespace SteamPipeGUI.NET
         {
             _buildId = buildId;
             _appId = appId;
-            InitializeComponent();
             System.Media.SystemSounds.Beep.Play();
+            InitializeComponent();
+            Size = new Size(584, 119);
             message.Text = string.Format(message.Text, buildId, appId);
         }
 

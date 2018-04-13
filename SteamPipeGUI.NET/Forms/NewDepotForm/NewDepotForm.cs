@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace SteamPipeGUI.NET
 {
@@ -7,6 +8,7 @@ namespace SteamPipeGUI.NET
         public AddDepotForm()
         {
             InitializeComponent();
+            Size = new Size(196, 108);
         }
 
         private void depotId_KeyUp(object sender, KeyEventArgs e)

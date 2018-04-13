@@ -26,6 +26,7 @@ namespace SteamPipeGUI.NET
         public MainForm()
         {
             InitializeComponent();
+            infoTip.Active = true;
             Text = ProductName + " " + Assembly.GetEntryAssembly().GetName().Version;
             versionLabel.Text = Assembly.GetEntryAssembly().GetName().Version.ToString();
             LoadEnvironment();

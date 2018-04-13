@@ -1,4 +1,5 @@
-﻿using System.Media;
+﻿using System.Drawing;
+using System.Media;
 using System.Windows.Forms;
 
 namespace SteamPipeGUI.NET
@@ -10,6 +11,7 @@ namespace SteamPipeGUI.NET
         public InputForm(string request, bool isPassword)
         {
             SystemSounds.Beep.Play();
+            Size = new Size(413, 103);
             InitializeComponent();
             if (isPassword) {
                 inputBox.PasswordChar = '*';

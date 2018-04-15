@@ -17,6 +17,8 @@ namespace SteamPipeGUI.NET
     {
         private int _previousDepotIndex { get; set; }
 
+        private string _previousAppid { get; set; }
+
         private string _previousBuildId { get; set; }
 
         private bool _isPreview { get; set; }
@@ -45,6 +47,7 @@ namespace SteamPipeGUI.NET
             setLiveComboBox.Items.AddRange(configuration.Branches);
             steamcmdPathTextBox.Text = configuration.SteamCmdPath;
             usernameTextBox.Text = configuration.SteamLogin;
+            resetConfigButton.Enabled = true;
         }
 
         private void SaveConfiguration()
@@ -56,6 +59,7 @@ namespace SteamPipeGUI.NET
             };
             File.WriteAllText(Application.StartupPath + @"\scripts\SteamPipeGUI.NET.Configuration.JSON",
                 JsonConvert.SerializeObject(configuration, Formatting.Indented));
+            resetConfigButton.Enabled = true;
         }
 
         private void AppendLog(string log)
@@ -114,7 +118,7 @@ namespace SteamPipeGUI.NET
                     statusBar.Style = ProgressBarStyle.Blocks;
                     statusBar.Value++;
                     statusLabel.Text =
-                        $"Working with depot `{Regex.Match(log, @"Building depot (\w+)...").Groups[1].Value}` [{statusBar.Value}/{statusBar.Maximum}]...";
+                        $"Working with depot `{Regex.Match(log, @"Building depot (\w+)...").Groups[1].Value}` [{statusBar.Value}/{statusBar.Maximum - 1}]...";
                     return;
                 }
 
@@ -249,8 +253,10 @@ namespace SteamPipeGUI.NET
                 directoryInfos.GetFiles().Where(x => regex.Match(x.Name).Success).Select(x => x.FullName).ToArray();
             if (builds.Length != 0) {
                 LoadBuild(builds[0]);
+                saveAppbuildButton.Enabled = false;
                 AppendLog("Loaded build from a file.");
             } else {
+                saveAppbuildButton.Enabled = true;
                 LoadBuild(new Build(480));
                 AppendLog("Loaded default build.");
             }
@@ -275,6 +281,25 @@ namespace SteamPipeGUI.NET
             outputTextBox.Text = build.BuildOutput;
             contentTextBox.Text = build.ContentRoot;
             localServerTextBox.Text = build.Local;
+            _previousAppid = build.AppId.ToString();
+        }
+
+        private void SaveBuild()
+        {
+            AppendLog("Generating app_build...");
+            Build build = new Build(int.Parse(appIdBox.Text))
+            {
+                BuildDescription = descBox.Text,
+                Depots = depotListBox.Items.Cast<string>().ToList(),
+                SetLive = setLiveComboBox.Text,
+                ContentRoot = contentTextBox.Text,
+                BuildOutput = outputTextBox.Text,
+                Local = localServerTextBox.Text,
+                Preview = _isPreview
+            };
+            File.WriteAllText(Application.StartupPath + $@"\scripts\app_build_{appIdBox.Text}.vdf", build.ToString());
+            AppendLog($"Build configuration is saved as `{Application.StartupPath + $@"\scripts\app_build_{appIdBox.Text}.vdf"}`");
+            saveAppbuildButton.Enabled = false;
         }
 
         private void LoadDepot()
@@ -352,17 +377,7 @@ namespace SteamPipeGUI.NET
                 setLiveComboBox.Items.Add(setLiveComboBox.Text);
             }
             SaveConfiguration();
-            AppendLog("Generating app_build...");
-            Build build = new Build(int.Parse(appIdBox.Text)) {
-                BuildDescription = descBox.Text,
-                Depots = depotListBox.Items.Cast<string>().ToList(),
-                SetLive = setLiveComboBox.Text,
-                ContentRoot = contentTextBox.Text,
-                BuildOutput = outputTextBox.Text,
-                Local = localServerTextBox.Text,
-                Preview = _isPreview
-            };
-            File.WriteAllText(Application.StartupPath + $@"\scripts\app_build_{appIdBox.Text}.vdf", build.ToString());
+            SaveBuild();
             AppendLog("Creating process...");
             ProcessStartInfo proc = new ProcessStartInfo {
                 UseShellExecute = false,
@@ -458,6 +473,32 @@ namespace SteamPipeGUI.NET
         private void buildReloadEnviButton_Click(object sender, EventArgs e)
         {
             LoadEnvironment();
+        }
+
+        private void saveConfigButton_Click(object sender, EventArgs e)
+        {
+            SaveConfiguration();
+        }
+
+        private void saveAppbuildButton_Click(object sender, EventArgs e)
+        {
+            if (_previousAppid != appIdBox.Text) {
+                File.Delete(Application.StartupPath + $@"\scripts\app_build_{_previousAppid}.vdf");
+                _previousAppid = appIdBox.Text;
+            }
+            SaveBuild();
+        }
+
+        private void resetConfigButton_Click(object sender, EventArgs e)
+        {
+            File.Delete(Application.StartupPath + @"\scripts\SteamPipeGUI.NET.Configuration.JSON");
+            resetConfigButton.Enabled = true;
+            AppendLog($"Removed application configuration at `{Application.StartupPath + @"\scripts\SteamPipeGUI.NET.Configuration.JSON"}`.");
+        }
+
+        private void appIdBox_TextChanged(object sender, EventArgs e)
+        {
+            saveAppbuildButton.Enabled = true;
         }
     }
 }

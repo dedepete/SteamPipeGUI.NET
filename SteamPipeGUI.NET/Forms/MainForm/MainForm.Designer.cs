@@ -34,6 +34,8 @@
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.buildConfigPage = new System.Windows.Forms.TabPage();
             this.mainConfigGroup = new System.Windows.Forms.GroupBox();
+            this.resetConfigButton = new System.Windows.Forms.Button();
+            this.saveConfigButton = new System.Windows.Forms.Button();
             this.sdkTip = new System.Windows.Forms.Label();
             this.passTip = new System.Windows.Forms.Label();
             this.usernameTip = new System.Windows.Forms.Label();
@@ -46,6 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.buildConfigGroup = new System.Windows.Forms.GroupBox();
+            this.saveAppbuildButton = new System.Windows.Forms.Button();
             this.localTip = new System.Windows.Forms.Label();
             this.contentTip = new System.Windows.Forms.Label();
             this.outputTip = new System.Windows.Forms.Label();
@@ -161,6 +164,8 @@
             // 
             this.mainConfigGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainConfigGroup.Controls.Add(this.resetConfigButton);
+            this.mainConfigGroup.Controls.Add(this.saveConfigButton);
             this.mainConfigGroup.Controls.Add(this.sdkTip);
             this.mainConfigGroup.Controls.Add(this.passTip);
             this.mainConfigGroup.Controls.Add(this.usernameTip);
@@ -178,6 +183,27 @@
             this.mainConfigGroup.TabIndex = 5;
             this.mainConfigGroup.TabStop = false;
             this.mainConfigGroup.Text = "Main Configuration";
+            // 
+            // resetConfigButton
+            // 
+            this.resetConfigButton.Enabled = false;
+            this.resetConfigButton.Location = new System.Drawing.Point(647, 45);
+            this.resetConfigButton.Name = "resetConfigButton";
+            this.resetConfigButton.Size = new System.Drawing.Size(109, 21);
+            this.resetConfigButton.TabIndex = 12;
+            this.resetConfigButton.Text = "Reset";
+            this.resetConfigButton.UseVisualStyleBackColor = true;
+            this.resetConfigButton.Click += new System.EventHandler(this.resetConfigButton_Click);
+            // 
+            // saveConfigButton
+            // 
+            this.saveConfigButton.Location = new System.Drawing.Point(647, 69);
+            this.saveConfigButton.Name = "saveConfigButton";
+            this.saveConfigButton.Size = new System.Drawing.Size(109, 23);
+            this.saveConfigButton.TabIndex = 11;
+            this.saveConfigButton.Text = "Save";
+            this.saveConfigButton.UseVisualStyleBackColor = true;
+            this.saveConfigButton.Click += new System.EventHandler(this.saveConfigButton_Click);
             // 
             // sdkTip
             // 
@@ -289,6 +315,7 @@
             // 
             this.buildConfigGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.buildConfigGroup.Controls.Add(this.saveAppbuildButton);
             this.buildConfigGroup.Controls.Add(this.localTip);
             this.buildConfigGroup.Controls.Add(this.contentTip);
             this.buildConfigGroup.Controls.Add(this.outputTip);
@@ -307,6 +334,17 @@
             this.buildConfigGroup.TabIndex = 4;
             this.buildConfigGroup.TabStop = false;
             this.buildConfigGroup.Text = "Build Configuration";
+            // 
+            // saveAppbuildButton
+            // 
+            this.saveAppbuildButton.Enabled = false;
+            this.saveAppbuildButton.Location = new System.Drawing.Point(649, 90);
+            this.saveAppbuildButton.Name = "saveAppbuildButton";
+            this.saveAppbuildButton.Size = new System.Drawing.Size(109, 23);
+            this.saveAppbuildButton.TabIndex = 11;
+            this.saveAppbuildButton.Text = "Save";
+            this.saveAppbuildButton.UseVisualStyleBackColor = true;
+            this.saveAppbuildButton.Click += new System.EventHandler(this.saveAppbuildButton_Click);
             // 
             // localTip
             // 
@@ -358,6 +396,7 @@
             this.localServerTextBox.Name = "localServerTextBox";
             this.localServerTextBox.Size = new System.Drawing.Size(207, 20);
             this.localServerTextBox.TabIndex = 6;
+            this.localServerTextBox.TextChanged += new System.EventHandler(this.appIdBox_TextChanged);
             // 
             // localServerLabel
             // 
@@ -374,6 +413,7 @@
             this.contentTextBox.Name = "contentTextBox";
             this.contentTextBox.Size = new System.Drawing.Size(207, 20);
             this.contentTextBox.TabIndex = 4;
+            this.contentTextBox.TextChanged += new System.EventHandler(this.appIdBox_TextChanged);
             // 
             // contentDirLabel
             // 
@@ -390,6 +430,7 @@
             this.outputTextBox.Name = "outputTextBox";
             this.outputTextBox.Size = new System.Drawing.Size(207, 20);
             this.outputTextBox.TabIndex = 2;
+            this.outputTextBox.TextChanged += new System.EventHandler(this.appIdBox_TextChanged);
             // 
             // outputDirLabel
             // 
@@ -407,6 +448,7 @@
             this.appIdBox.Name = "appIdBox";
             this.appIdBox.Size = new System.Drawing.Size(77, 20);
             this.appIdBox.TabIndex = 0;
+            this.appIdBox.TextChanged += new System.EventHandler(this.appIdBox_TextChanged);
             // 
             // appIdLabel
             // 
@@ -805,6 +847,7 @@
             this.descBox.Name = "descBox";
             this.descBox.Size = new System.Drawing.Size(293, 20);
             this.descBox.TabIndex = 2;
+            this.descBox.TextChanged += new System.EventHandler(this.appIdBox_TextChanged);
             // 
             // setLiveLabel
             // 
@@ -822,6 +865,7 @@
             this.setLiveComboBox.Name = "setLiveComboBox";
             this.setLiveComboBox.Size = new System.Drawing.Size(215, 21);
             this.setLiveComboBox.TabIndex = 6;
+            this.setLiveComboBox.TextChanged += new System.EventHandler(this.appIdBox_TextChanged);
             // 
             // uploadButton
             // 
@@ -1018,6 +1062,9 @@
         private System.Windows.Forms.LinkLabel jsonLink;
         private System.Windows.Forms.LinkLabel vdfLink;
         private System.Windows.Forms.Label copyrightLabel;
+        private System.Windows.Forms.Button saveConfigButton;
+        private System.Windows.Forms.Button saveAppbuildButton;
+        private System.Windows.Forms.Button resetConfigButton;
     }
 }
 
